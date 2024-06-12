@@ -18,5 +18,16 @@ LDLIBS = -lm
 
 all: integral
 
-integral: integral.c
-	$(CC) $(CFLAGS) -o $@ $< $(LDLIBS)
+integral: f1_calc.o f2_calc.o f3_calc.o integral.o
+	$(CC) $(CFLAGS) f1_calc.o f2_calc.o f3_calc.o integral.o -o start
+f1_calc.o:
+	nasm -f elf f1_calc.asm
+f2_calc.o:
+	nasm -f elf f2_calc.asm
+f3_calc.o:
+	nasm -f elf f3_calc.asm
+integral.o:
+	$(CC) $(CFLAGS) -c integral.c
+clean:
+	rm -rf *.o integral
+	rm start
