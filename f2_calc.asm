@@ -12,7 +12,7 @@ f2_calc:
     faddp
     fmul
     fchs
-    fld dword[eight]
+    fld qword[eight]
     fadd
     leave
     ret

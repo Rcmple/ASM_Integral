@@ -4,7 +4,11 @@ f1_calc:
     finit
     push ebp
     mov ebp, esp
-    sub esp, 4
+    sub esp, 6
+
+    fstcw word [ebp-2]
+    or word [ebp-2], 0b110000000000
+    fldcw word [ebp-2]
 
     fld qword [ebp+8]
     fldl2e

@@ -30,4 +30,5 @@ integral.o:
 	$(CC) $(CFLAGS) -c integral.c
 clean:
 	rm -rf *.o integral
+	rm -rf *.obj integral
 	rm start
