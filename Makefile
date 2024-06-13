@@ -19,7 +19,7 @@ LDLIBS = -lm
 all: integral
 
 integral: f1_calc.o f2_calc.o f3_calc.o integral.o
-	$(CC) $(CFLAGS) f1_calc.o f2_calc.o f3_calc.o integral.o -o integral
+	$(CC) $(CFLAGS) f1_calc.o f2_calc.o f3_calc.o integral.o -lm -o integral
 f1_calc.o:
 	nasm -f elf f1_calc.asm
 f2_calc.o:
@@ -33,6 +33,6 @@ clean:
 	rm -rf *.obj integral
 	rm start
 test: integral
-	./integral --test-integral 3:-1.324:-0.5495:0.00001:4.39702
-	./integral --test-integral 1:-1:1.23:0.00001:7.51335
-	./integral --test-integral 2:-5.435:1.2518:0.00001:81.4666
+	./integral --test-integral 4:-3.32:1.242:0.00001:-5.85611
+	./integral --test-integral 5:2.234:6.34342:0.00001:24.7216
+	./integral --test-integral 6:-0.322541:2.348:0.00001:15.7853

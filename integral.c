@@ -4,11 +4,25 @@
 extern double f1_calc(double a);
 extern double f2_calc(double a);
 extern double f3_calc(double a);
+double f4_calc(double a);
+double f5_calc(double a);
+double f6_calc(double a);
 double root(double (*f)(double), double (*g)(double), double a, double b, double eps1);
 int cnt_root(double (*f)(double), double (*g)(double), double a, double b, double eps1);
 double integral(double (*f)(double), double a, double b, double eps2);
 void print_all_keys(void);
 
+double f4_calc(double a) {
+    return pow(2, a) - 2;
+}
+
+double f5_calc(double a) {
+    return 4 / a + 5;
+}
+
+double f6_calc(double a) {
+    return -7 * a + 13;
+}
 int cnt_root(double (*f)(double), double (*g)(double), double a, double b, double eps1) {
     double l = a;
     double r = b;
@@ -157,7 +171,20 @@ int main(int argc, char* argv[]) {
                 if (f_cnt == 3) {
                     res = integral(f3_calc, cur_a, cur_b, cur_eps);
                 }
-                printf("Абсолютная погрешность: %lf", fabs(res - cur_r));
+                if (f_cnt == 4) {
+                    res = integral(f4_calc, cur_a, cur_b, cur_eps);
+                    printf("Function: y = 2^x - 2\n\n");
+                }
+                if (f_cnt == 5) {
+                    res = integral(f5_calc, cur_a, cur_b, cur_eps);
+                    printf("Function: y = 4 / x + 5\n\n");
+                }
+                if (f_cnt == 6) {
+                    res = integral(f6_calc, cur_a, cur_b, cur_eps);
+                    printf("Function: y = -7x + 13\n\n");
+                }
+                printf("Ответ: %lf\n", res);
+                printf("Абсолютная погрешность: %lf\n", fabs(res - cur_r));
                 break;
             }
 
